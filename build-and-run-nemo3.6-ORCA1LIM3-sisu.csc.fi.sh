@@ -70,7 +70,7 @@ echo "ORCA1_LIM3 OPA_SRC LIM_SRC_3 NST_SRC" >> cfg.txt
 
 cp -ar ORCA1_LIM3_PISCES ORCA1_LIM3
 rm ORCA1_LIM3/cpp_ORCA1_LIM3_PISCES.fcm
-echo "bld::tool::fppkeys key_trabbl key_lim3 key_vvl key_dynspg_ts key_diaeiv key_ldfslp key_traldf_c2d key_traldf_eiv key_dynldf_c3d  key_zdfddm key_zdftmx_new key_mpp_mpi key_zdftke key_iomput key_mpp_rep key_xios2 key_nosignedzero" > ORCA1_LIM3/cpp_ORCA1_LIM3.fcm
+echo "bld::tool::fppkeys key_trabbl key_lim3 key_vvl key_dynspg_ts key_diaeiv key_ldfslp key_traldf_c2d key_traldf_eiv key_dynldf_c3d  key_zdfddm key_zdftmx_new key_mpp_mpi key_zdftke key_iomput key_xios2 key_nosignedzero" > ORCA1_LIM3/cpp_ORCA1_LIM3.fcm
 
 # Compile executable
 ./makenemo -m xc40-sisu.csc.fi -n ORCA1_LIM3
