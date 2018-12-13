@@ -16,7 +16,7 @@ fi
 
 # Checkout sources
 
-cd $TMPDIR
+cd $WRKDIR
 svn co http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/releases/release-3.6/NEMOGCM NEMOGCM3.6
 
 # Configure architecture
@@ -69,6 +69,7 @@ echo "bld::tool::fppkeys key_trabbl key_lim3 key_vvl key_dynspg_ts key_diaeiv ke
 ./makenemo -m gnu-sisu.csc.fi -n ORCA1_LIM3
 
 # Create an experiment
+rm -f ORCA1_LIM3/EXP01
 mkdir ORCA1_LIM3/EXP01
 cd ORCA1_LIM3/EXP01
 tar -xf /wrk/puotila/DONOTREMOVE/SHACONEMO/INPUTS_ORCA1_LIM3_UH_V1.tar
@@ -76,18 +77,7 @@ ln -s ${TMPDIR}/puotila/NEMOGCM3.6/CONFIG/ORCA1_LIM3/BLD/bin/nemo.exe opa
 ln -s ../../SHARED/namelist_ice_lim3_ref namelist_ice_ref
 ln -s ../../SHARED/namelist_ref namelist_ref
 
-cat > nemo_run.sh <<EOF
-#!/bin/bash -l
-#SBATCH -J nemo
-#SBATCH -o nemo%J.out
-#SBATCH -e nemo%J.err
-#SBATCH -t 00:29:00
-#SBATCH -N 1
-#SBATCH -p test
-
-module list
-
-aprun -n 24 ./opa
+sbatch -N 1 -p orca1 -t 30 << EOF
+#!/bin/bash
+aprun -n 24 ../BLD/bin/nemo.exe
 EOF
-
-qsub nemo_run.sh
