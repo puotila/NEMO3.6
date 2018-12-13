@@ -77,7 +77,7 @@ ln -s ${TMPDIR}/puotila/NEMOGCM3.6/CONFIG/ORCA1_LIM3/BLD/bin/nemo.exe opa
 ln -s ../../SHARED/namelist_ice_lim3_ref namelist_ice_ref
 ln -s ../../SHARED/namelist_ref namelist_ref
 
-sbatch -N 1 -p orca1 -t 30 << EOF
+sbatch -N 1 -p test -t 30 -J orca1 << EOF
 #!/bin/bash
 aprun -n 24 ../BLD/bin/nemo.exe
 EOF
