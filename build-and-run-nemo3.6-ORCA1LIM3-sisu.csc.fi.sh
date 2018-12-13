@@ -58,6 +58,9 @@ cat > ../ARCH/arch-xc40-sisu.csc.fi.fcm <<EOF
 
 %USER_INC            %XIOS_INC
 %USER_LIB            %XIOS_LIB
+
+%CC                  cc
+%CFLAGS              -O0
 EOF
 
 # Get and set ORCA1L75LIM3 configuration without PISCES
