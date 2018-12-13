@@ -73,11 +73,11 @@ rm -f ORCA1_LIM3/EXP01
 mkdir ORCA1_LIM3/EXP01
 cd ORCA1_LIM3/EXP01
 tar -xf /wrk/puotila/DONOTREMOVE/SHACONEMO/INPUTS_ORCA1_LIM3_UH_V1.tar
-ln -s ${TMPDIR}/puotila/NEMOGCM3.6/CONFIG/ORCA1_LIM3/BLD/bin/nemo.exe opa
+ln -s ${WRKDIR}/NEMOGCM3.6/CONFIG/ORCA1_LIM3/BLD/bin/nemo.exe opa
 ln -s ../../SHARED/namelist_ice_lim3_ref namelist_ice_ref
 ln -s ../../SHARED/namelist_ref namelist_ref
 
 sbatch -N 1 -p test -t 30 -J orca1 << EOF
 #!/bin/bash
-aprun -n 24 ../BLD/bin/nemo.exe
+aprun -n 24 ./opa
 EOF
